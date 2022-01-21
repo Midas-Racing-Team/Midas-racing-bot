@@ -1,0 +1,17 @@
+{
+  "name": "midas-racing-bot",
+  "version": "0.0.1",
+  "description": "bot midas racing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hubert Bock",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "discord-dashboard": "^2.0.31",
+    "discord.js": "^13.6.0",
+    "fs": "^0.0.1-security"
+  }
+}
