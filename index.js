@@ -50,4 +50,4 @@ client.on('messageCreate', async message =>
 });
 
 
-client.login('WKLEJ_TUTAJ_SWÓJ_TOKEN');
+client.login('OTUwNTAzNzEwMjc3MTIwMDQw.YiZ3kA.HsDH_t0nGwJSyLAUtWDXSJqpEmg');
