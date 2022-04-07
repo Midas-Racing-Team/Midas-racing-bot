@@ -12,6 +12,7 @@
     "axios": "^0.25.0",
     "discord-dashboard": "^2.0.31",
     "discord.js": "^13.6.0",
+    "embed-table": "^3.0.0",
     "fs": "^0.0.1-security"
   }
 }
