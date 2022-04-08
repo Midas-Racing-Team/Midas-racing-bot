@@ -4,7 +4,15 @@ const {
     MessageEmbed
 } = require('discord.js');
 
+// CONFIG:
 
+let resultlink = 'https://www.republicofsimracers.com/timetable/live-data/906?racenum=q&server=1';
+let resulttitle = 'Race 897 ranking';
+let resulturl = 'https://www.republicofsimracers.com/'; //This URL redirect from title button
+let resulticon = 'https://i.imgur.com/lm8s41J.png';
+let embedcolor = 3147003;
+
+// END OF CONFIG
 
 module.exports = {
     name: `r`,
@@ -12,23 +20,24 @@ module.exports = {
     description: `ranks`,
     usage: `!r`,
     execute: async (message, args) => {
-        axios.get(`https://www.republicofsimracers.com/timetable/live-data/906?racenum=q&server=1`)
+        axios.get(resultlink)
             .then((res) => {
-                
+
                 //Make result accessibility for all functions
                 let resd = res;
                 var countpositions = 0;
                 // We need to calculate max finish position for specify messages to send
-                for(key in resd.data){
+                for (key in resd.data) {
                     countpositions++
                     // Here we need to set max finishposition number from res
-                    console.log("klucz" + countpositions );
+                    console.log("klucz" + countpositions);
                 }
-                
+
                 var higherposition = 22; // temporary variable for max messages function. Edit function above
 
 
-                //We downloaded data, now create first message
+                
+                //Create first message with 'table' headers
 
                 $firstmessage = [{
                         name: "Msc",
@@ -51,7 +60,10 @@ module.exports = {
 
                 function morestats(n) {
 
-                    for (var i = 1; i < 14; i += 2) {
+                    var c = n - 13;
+
+
+                    for (var i = c; i < n; i += 2) {
                         console.log(i);
                         pos1 = i;
                         pos2 = i;
@@ -105,10 +117,8 @@ module.exports = {
                 };
 
 
-                // Here we compare all fields of table
-                $rankingMessage = [
-                    $firstmessage, morestats(5)
-                ];
+
+
 
 
 
@@ -116,14 +126,16 @@ module.exports = {
 
                 message.channel.send({
                     embeds: [{
-                        color: 3447003,
+                        color: embedcolor,
                         author: {
                             name: "Miejsca 1-15",
-                            icon_url: "https://i.imgur.com/lm8s41J.png"
+                            icon_url: resulticon
                         },
-                        title: "Race 897 ranking",
-                        url: "https://www.republicofsimracers.com/",
-                        fields: $rankingMessage,
+                        title: resulttitle,
+                        url: resulturl,
+                        fields: $rankingMessage = [
+                            $firstmessage, morestats(14)
+                        ],
 
 
 
@@ -132,14 +144,16 @@ module.exports = {
                 //next message
                 message.channel.send({
                     embeds: [{
-                        color: 3447003,
+                        color: embedcolor,
                         author: {
-                            name: "Miejsca 15-20",
-                            icon_url: "https://i.imgur.com/lm8s41J.png"
+                            name: "Miejsca 15-30",
+                            icon_url: resulticon
                         },
-                        title: "Race 897 ranking",
-                        url: "https://www.republicofsimracers.com/",
-                        fields: $rankingMessage,
+                        title: resulttitle,
+                        url: resulturl,
+                        fields: $rankingMessage = [
+                            morestats(25)
+                        ],
 
 
 
